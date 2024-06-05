@@ -1,7 +1,6 @@
 package microservices.book.social_multiplication.controller;
 
 import microservices.book.social_multiplication.domain.Multiplication;
-import microservices.book.social_multiplication.domain.MultiplicationResultAttempt;
 import microservices.book.social_multiplication.service.serviceInt.MultiplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

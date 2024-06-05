@@ -60,7 +60,7 @@ public class MultiplicationResultAttemptControllerTest {
         given(multiplicationService.checkAttempts(any(MultiplicationResultAttempt.class))).willReturn(correct);
         User user = new User("John");
         Multiplication multiplication = new Multiplication(50,20);
-        MultiplicationResultAttempt attempt = new MultiplicationResultAttempt(user, multiplication, 3500);
+        MultiplicationResultAttempt attempt = new MultiplicationResultAttempt(user, multiplication, 3500, false);
 
         //when
         MockHttpServletResponse response = mvc.perform(

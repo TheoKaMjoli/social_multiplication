@@ -44,10 +44,13 @@ public class MultiplicationServiceImplTest {
 
     @Test
     public void checkCorrectAttemptTest(){
+
+
+
         //given
         Multiplication multiplication = new Multiplication(50,60);
         User user = new User("TestName");
-        MultiplicationResultAttempt attempt  = new MultiplicationResultAttempt(user, multiplication, 3000);
+        MultiplicationResultAttempt attempt  = new MultiplicationResultAttempt(user, multiplication, 3000, false);
 
         //when
         boolean attemptResult = multiplicationServiceImpl.checkAttempts(attempt);
@@ -61,7 +64,7 @@ public class MultiplicationServiceImplTest {
         //given
         Multiplication multiplication = new Multiplication(50,60);
         User user = new User("Test2");
-        MultiplicationResultAttempt multiplicationResultAttempt = new MultiplicationResultAttempt(user, multiplication, 3010);
+        MultiplicationResultAttempt multiplicationResultAttempt = new MultiplicationResultAttempt(user, multiplication, 3010, false);
 
         //when
         boolean attemptResult = multiplicationServiceImpl.checkAttempts(multiplicationResultAttempt);
