@@ -22,12 +22,12 @@ final class multiplicationResultsAttemptConroller {
 
     //We will implement our post later
 
-//    @RequiredArgsConstructor
-//    @NoArgsConstructor(force = true)
-//    @Getter
-//    private static final class ResultResponse{
-//        private final boolean correct;
-//    }
+    //    @RequiredArgsConstructor
+    //    @NoArgsConstructor(force = true)
+    //    @Getter
+    //    private static final class ResultResponse{
+    //        private final boolean correct;
+    //    }
 
     @PostMapping
     ResponseEntity<MultiplicationResultAttempt> postResult(@RequestBody MultiplicationResultAttempt multiplicationResultAttempt){
@@ -38,6 +38,7 @@ final class multiplicationResultsAttemptConroller {
                                             multiplicationResultAttempt.getMultiplication(),
                                             multiplicationResultAttempt.getResultAttempt(),
                                             isCorrect);
+
         return ResponseEntity.ok(attemptCopy);
     }
 

@@ -1,4 +1,4 @@
-package microservices.book.social_multiplication.service;
+package microservices.book.social_multiplication.domain;
 
 import microservices.book.social_multiplication.domain.Multiplication;
 import microservices.book.social_multiplication.service.serviceInt.MultiplicationService;
