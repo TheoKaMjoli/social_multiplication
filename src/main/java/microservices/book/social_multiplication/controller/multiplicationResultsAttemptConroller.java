@@ -1,7 +1,6 @@
 package microservices.book.social_multiplication.controller;
 
 import microservices.book.social_multiplication.domain.MultiplicationResultAttempt;
-import microservices.book.social_multiplication.domain.ResultResponse;
 import microservices.book.social_multiplication.service.serviceInt.MultiplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -31,9 +30,15 @@ final class multiplicationResultsAttemptConroller {
 //    }
 
     @PostMapping
-    ResponseEntity<ResultResponse> postResult(@RequestBody MultiplicationResultAttempt multiplicationResultAttempt){
-        return ResponseEntity.ok(
-                new ResultResponse(multiplicationService.checkAttempts(multiplicationResultAttempt)));
+    ResponseEntity<MultiplicationResultAttempt> postResult(@RequestBody MultiplicationResultAttempt multiplicationResultAttempt){
+
+        boolean isCorrect = multiplicationService.checkAttempts(multiplicationResultAttempt);
+        MultiplicationResultAttempt attemptCopy = new
+                MultiplicationResultAttempt(multiplicationResultAttempt.getUser(),
+                                            multiplicationResultAttempt.getMultiplication(),
+                                            multiplicationResultAttempt.getResultAttempt(),
+                                            isCorrect);
+        return ResponseEntity.ok(attemptCopy);
     }
 
 
