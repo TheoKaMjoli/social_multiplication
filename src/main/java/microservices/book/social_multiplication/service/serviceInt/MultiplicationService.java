@@ -2,6 +2,8 @@ package microservices.book.social_multiplication.service.serviceInt;
 import microservices.book.social_multiplication.domain.Multiplication;
 import microservices.book.social_multiplication.domain.MultiplicationResultAttempt;
 
+import java.util.List;
+
 public interface MultiplicationService{
 
     /**
@@ -17,5 +19,5 @@ public interface MultiplicationService{
      */
 
     boolean checkAttempts(final MultiplicationResultAttempt multiplicationResultAttempt);
-
+    List<MultiplicationResultAttempt> getStatsForUser(String userAlias);
 }

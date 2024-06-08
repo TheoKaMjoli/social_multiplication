@@ -7,11 +7,13 @@ import microservices.book.social_multiplication.repository.MultiplicationResultA
 import microservices.book.social_multiplication.repository.UserRepo;
 import microservices.book.social_multiplication.service.serviceImpl.MultiplicationServiceImpl;
 import microservices.book.social_multiplication.service.serviceInt.RandomGeneratorService;
+import org.assertj.core.util.Lists;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -73,7 +75,6 @@ public class MultiplicationServiceImplTest {
 
     @Test
     public void CheckIncorrectAttemptTest(){
-
         //given
         Multiplication multiplication = new Multiplication(50,60);
         User user = new User("Johnny_Depp");
@@ -86,6 +87,43 @@ public class MultiplicationServiceImplTest {
         //then
         assertThat(attemptResult).isFalse();
         verify(attemptRepo).save(attempt);
+    }
+
+    @Test
+    public void retrieveStatsTest(){
+        //given
+        Multiplication multiplication = new Multiplication(50, 60);
+        User user = new User("Johnny Depp");
+        MultiplicationResultAttempt resultAttempt_1 =  new MultiplicationResultAttempt(user, multiplication, 3010, false);
+        MultiplicationResultAttempt resultAttempt_2 =  new MultiplicationResultAttempt(user, multiplication, 3051, false);
+        List<MultiplicationResultAttempt> latestAttempt = Lists.newArrayList(resultAttempt_1, resultAttempt_2);
+        given(attemptRepo.findTop5byUserAliasOrderByIdDesc("Johnny Depp")).willReturn(latestAttempt);
+        //when
+        List<MultiplicationResultAttempt>latestAttemptResult = multiplicationServiceImpl.getStatsForUser("Johnny Depp");
+        //then
+        assertThat(latestAttemptResult).isEqualTo(latestAttempt);
 
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

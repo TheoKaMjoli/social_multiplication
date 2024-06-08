@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -44,14 +45,17 @@ public class MultiplicationServiceImpl implements MultiplicationService {
 
         boolean isCorrect = resultAttempt.getResultAttempt() == resultAttempt.getMultiplication().getFactorA()
                         * resultAttempt.getMultiplication().getFactorB();
-
         Assert.isTrue(!resultAttempt.isCorrect(), "You cannot send attempt marked as correct!");  //avoid heck attempt
         //create a copy, now setting the 'correct' field accordingly
         MultiplicationResultAttempt checkedAttempt = new MultiplicationResultAttempt(resultAttempt.getUser(), resultAttempt.getMultiplication(), resultAttempt.getResultAttempt(), isCorrect);
-
         //stores the attempt
         attemptRepo.save(checkedAttempt);
-
         return isCorrect;
     }
+
+    @Override
+    public List<MultiplicationResultAttempt> getStatsForUser(String userAlias){
+        return attemptRepo.findTop5byUserAliasOrderByIdDesc(userAlias);
+    }
+
 }
