@@ -6,9 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.ToString;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 /**
  * This class represents a Multiplication in our application.

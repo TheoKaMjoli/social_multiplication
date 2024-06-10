@@ -96,7 +96,7 @@ public class MultiplicationResultAttemptControllerTest {
         given(multiplicationService.getStatsForUser("Johnny Depp")).willReturn(recentAttempts);
 
         //when
-        MockHttpServletResponse response = mvc.perform(get("/results").param("alias", "Johnny Depp")).andReturn().getResponse();
+        MockHttpServletResponse response = mvc.perform(get("/results").param("alias", "Johnny_Depp")).andReturn().getResponse();
 
         //then
         assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());

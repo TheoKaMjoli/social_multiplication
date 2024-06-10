@@ -5,6 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 /**
  * Identifies the attempt from a {@link User} to solve a
@@ -21,7 +22,6 @@ public final class MultiplicationResultAttempt {
     @Id
     @GeneratedValue
     private Long id;
-
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "USER_ID")
     private final User user;

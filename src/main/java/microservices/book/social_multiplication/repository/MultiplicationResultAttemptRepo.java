@@ -9,6 +9,6 @@ public interface MultiplicationResultAttemptRepo extends CrudRepository<Multipli
     /**
      * *@return the latest 5 attempts for a given user, identify by their alias
 */
-    List<MultiplicationResultAttempt> findTop5byUserAliasOrderByIdDesc(String userAlias);
+    List<MultiplicationResultAttempt> findTop5ByUserAliasOrderByIdDesc(String userAlias);
 
 }
